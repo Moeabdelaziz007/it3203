@@ -1,3 +1,4 @@
+// Event listener for form submission
 document.getElementById("quiz-form").addEventListener("submit", function(event) {
   event.preventDefault();
 
@@ -6,22 +7,22 @@ document.getElementById("quiz-form").addEventListener("submit", function(event) 
   let score = 0;
   let feedback = "";
 
-  // Question 1
+  // Question 1 - Single correct
   const q1 = document.querySelector('input[name="q1"]:checked');
   if (q1 && q1.value === "a") score++;
   feedback += "<p>Q1: " + (q1 ? q1.value : "No Answer") + " - " + (q1 && q1.value === "a" ? "Correct" : "Incorrect. Answer: a") + "</p>";
 
-  // Question 2
+  // Question 2 - Single correct
   const q2 = document.querySelector('input[name="q2"]:checked');
   if (q2 && q2.value === "c") score++;
   feedback += "<p>Q2: " + (q2 ? q2.value : "No Answer") + " - " + (q2 && q2.value === "c" ? "Correct" : "Incorrect. Answer: c") + "</p>";
 
-  // Question 3
+  // Question 3 - Fill in the blank
   const q3 = document.querySelector('input[name="q3"]').value.trim().toLowerCase();
   if (q3 === "markup") score++;
   feedback += "<p>Q3: " + q3 + " - " + (q3 === "markup" ? "Correct" : "Incorrect. Answer: markup") + "</p>";
 
-  // Question 4 (checkboxes)
+  // Question 4 - Multiple correct (checkboxes)
   const q4 = document.querySelectorAll('input[name="q4"]:checked');
   const selectedQ4 = Array.from(q4).map(cb => cb.value);
   const correctQ4 = ["header", "footer", "section"];
@@ -29,17 +30,19 @@ document.getElementById("quiz-form").addEventListener("submit", function(event) 
   if (isCorrectQ4) score++;
   feedback += "<p>Q4: " + selectedQ4.join(", ") + " - " + (isCorrectQ4 ? "Correct" : "Incorrect. Answer: header, footer, section") + "</p>";
 
-  // Question 5
+  // Question 5 - Single correct
   const q5 = document.querySelector('input[name="q5"]:checked');
   if (q5 && q5.value === "b") score++;
   feedback += "<p>Q5: " + (q5 ? q5.value : "No Answer") + " - " + (q5 && q5.value === "b" ? "Correct" : "Incorrect. Answer: b") + "</p>";
 
   const pass = score >= 3 ? "✅ Passed" : "❌ Failed";
 
+  // Display final result
   resultDiv.innerHTML = "<h2>Your Score: " + score + "/5</h2>" + feedback + "<h3>" + pass + "</h3>";
   resultDiv.style.display = "block";
 });
 
+// Restart button resets the form
 document.getElementById("restart-btn").addEventListener("click", function() {
   document.getElementById("quiz-form").reset();
   document.getElementById("result").style.display = "none";

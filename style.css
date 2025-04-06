@@ -1,9 +1,11 @@
+/* Reset default styles */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* General body styling */
 body {
   font-family: 'Poppins', sans-serif;
   background-color: #f9f9f9;
@@ -12,6 +14,7 @@ body {
   padding: 20px;
 }
 
+/* Header styling */
 header {
   background-color: #004080;
   color: white;
@@ -19,6 +22,7 @@ header {
   text-align: center;
 }
 
+/* Navigation menu styling */
 nav ul {
   list-style: none;
   display: flex;
@@ -34,6 +38,7 @@ nav ul li a {
   font-weight: bold;
 }
 
+/* Main content area */
 main {
   max-width: 800px;
   margin: 40px auto;
@@ -43,6 +48,7 @@ main {
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
+/* Quiz container styling */
 .quiz-container {
   text-align: center;
 }
