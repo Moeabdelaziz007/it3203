@@ -1,28 +1,154 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Topic 2 - HTML Growth</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <header>
-  <h1>Welcome to My Web Project</h1>
-  <nav>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="topic1.html">Topic 1</a></li>
-      <li><a href="topic2.html">Topic 2</a></li>
-      <li><a href="references.html">References</a></li>
-      <li><a href="quiz.html">Quiz</a></li>
-    </ul>
-  </nav>
-</header>
+import { Card, CardContent } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { PlusCircle, MinusCircle } from 'lucide-react';
 
-  <main>
-    <h2>Topic 2: HTML’s Growth</h2>
-    <p>HTML has grown from a simple document markup language into a robust foundation for modern web development.</p>
-    <p>With versions like HTML5, it now supports multimedia, APIs, and enhanced accessibility.</p>
-  </main>
-</body>
-</html>
+export default function Topic2() {
+  return (
+    <section className="py-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h1 className="text-3xl font-bold text-gray-900 mb-6">Collaborative Learning</h1>
+        
+        <div className="md:flex md:items-center mb-8">
+          <div className="md:w-1/2 md:pr-8 mb-4 md:mb-0">
+            <Card>
+              <CardContent className="p-6">
+                <h2 className="text-xl font-bold text-gray-900 mb-4">What is Collaborative Learning?</h2>
+                <p className="text-gray-700">
+                  Collaborative learning is an educational approach that involves groups of students working together to solve problems, complete tasks, or create products. This approach is based on the idea that learning is a naturally social act, and that learning occurs through active engagement with others.
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+          <div className="md:w-1/2">
+            <div className="h-64 w-full rounded-lg bg-primary-100 flex items-center justify-center">
+              <svg className="h-24 w-24 text-primary-600 opacity-60" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+              </svg>
+            </div>
+          </div>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+          <Card>
+            <CardContent className="p-6">
+              <h2 className="text-lg font-bold text-gray-900 mb-4">Benefits</h2>
+              <ul className="space-y-2">
+                <li className="flex items-start">
+                  <span className="h-5 w-5 text-green-500 mr-2">
+                    <PlusCircle className="h-5 w-5" />
+                  </span>
+                  <span className="text-gray-700">Develops higher-level thinking skills</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="h-5 w-5 text-green-500 mr-2">
+                    <PlusCircle className="h-5 w-5" />
+                  </span>
+                  <span className="text-gray-700">Promotes student-faculty interaction</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="h-5 w-5 text-green-500 mr-2">
+                    <PlusCircle className="h-5 w-5" />
+                  </span>
+                  <span className="text-gray-700">Increases student retention</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="h-5 w-5 text-green-500 mr-2">
+                    <PlusCircle className="h-5 w-5" />
+                  </span>
+                  <span className="text-gray-700">Builds self-esteem in students</span>
+                </li>
+              </ul>
+            </CardContent>
+          </Card>
+          
+          <Card>
+            <CardContent className="p-6">
+              <h2 className="text-lg font-bold text-gray-900 mb-4">Challenges</h2>
+              <ul className="space-y-2">
+                <li className="flex items-start">
+                  <span className="h-5 w-5 text-red-500 mr-2">
+                    <MinusCircle className="h-5 w-5" />
+                  </span>
+                  <span className="text-gray-700">Unequal participation among team members</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="h-5 w-5 text-red-500 mr-2">
+                    <MinusCircle className="h-5 w-5" />
+                  </span>
+                  <span className="text-gray-700">Requires careful planning and monitoring</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="h-5 w-5 text-red-500 mr-2">
+                    <MinusCircle className="h-5 w-5" />
+                  </span>
+                  <span className="text-gray-700">May be difficult to assess individual contributions</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="h-5 w-5 text-red-500 mr-2">
+                    <MinusCircle className="h-5 w-5" />
+                  </span>
+                  <span className="text-gray-700">Some students may prefer working independently</span>
+                </li>
+              </ul>
+            </CardContent>
+          </Card>
+        </div>
+        
+        <Card className="mb-8">
+          <CardContent className="p-6">
+            <h2 className="text-xl font-bold text-gray-900 mb-4">Collaborative Learning Models</h2>
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+              <div className="border rounded-lg p-4 bg-gray-50">
+                <h3 className="font-medium text-gray-900 mb-2">Problem-Based Learning</h3>
+                <p className="text-sm text-gray-600">Students work in teams to solve complex, real-world problems.</p>
+              </div>
+              <div className="border rounded-lg p-4 bg-gray-50">
+                <h3 className="font-medium text-gray-900 mb-2">Team-Based Learning</h3>
+                <p className="text-sm text-gray-600">Structured learning strategy where students work in permanent teams.</p>
+              </div>
+              <div className="border rounded-lg p-4 bg-gray-50">
+                <h3 className="font-medium text-gray-900 mb-2">Peer Instruction</h3>
+                <p className="text-sm text-gray-600">Students explain concepts to each other and debate solutions.</p>
+              </div>
+              <div className="border rounded-lg p-4 bg-gray-50">
+                <h3 className="font-medium text-gray-900 mb-2">Collaborative Projects</h3>
+                <p className="text-sm text-gray-600">Students collaborate on assignments or projects with shared goals.</p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+        
+        <Card className="mb-8">
+          <CardContent className="p-6">
+            <h2 className="text-xl font-bold text-gray-900 mb-4">Theoretical Foundations</h2>
+            <div className="space-y-4">
+              <div>
+                <h3 className="text-lg font-medium text-gray-900 mb-2">Social Constructivism</h3>
+                <p className="text-gray-700 mb-2">
+                  Based on Vygotsky's theories that emphasize the role of social interaction in cognitive development. Learning occurs when students engage with more knowledgeable peers or adults.
+                </p>
+                <Badge className="bg-blue-100 text-blue-800 hover:bg-blue-200">Vygotsky's Zone of Proximal Development</Badge>
+              </div>
+              
+              <div>
+                <h3 className="text-lg font-medium text-gray-900 mb-2">Cognitive Development Theory</h3>
+                <p className="text-gray-700 mb-2">
+                  Piaget's theory suggests that when students encounter viewpoints different from their own, cognitive conflict occurs that can lead to higher-level reasoning.
+                </p>
+                <Badge className="bg-blue-100 text-blue-800 hover:bg-blue-200">Piaget's Cognitive Equilibration</Badge>
+              </div>
+              
+              <div>
+                <h3 className="text-lg font-medium text-gray-900 mb-2">Social Interdependence Theory</h3>
+                <p className="text-gray-700 mb-2">
+                  Focuses on how the structure of goals affects the type of interaction among students, which in turn affects learning outcomes.
+                </p>
+                <Badge className="bg-blue-100 text-blue-800 hover:bg-blue-200">Positive Interdependence</Badge>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    </section>
+  );
+}

@@ -1,0 +1,282 @@
+import { useState } from 'react';
+import { 
+  Card, 
+  CardContent, 
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardFooter
+} from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Checkbox } from '@/components/ui/checkbox';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
+import { Label } from '@/components/ui/label';
+import { 
+  BookOpen, 
+  Users, 
+  BrainCircuit, 
+  Laptop, 
+  Smartphone 
+} from 'lucide-react';
+import { Progress } from '@/components/ui/progress';
+
+interface QuizFormProps {
+  answers: {
+    q1: string | null;
+    q2: string | null;
+    q3: string;
+    q4: string | null;
+    q5: string[];
+  };
+  onRadioChange: (questionId: 'q1' | 'q2' | 'q4', value: string) => void;
+  onTextChange: (value: string) => void;
+  onCheckboxChange: (value: string, checked: boolean) => void;
+  onSubmit: () => void;
+  onReset: () => void;
+}
+
+export default function QuizForm({ 
+  answers, 
+  onRadioChange, 
+  onTextChange, 
+  onCheckboxChange, 
+  onSubmit, 
+  onReset 
+}: QuizFormProps) {
+  // Calculate completion percentage
+  const getCompletionPercentage = () => {
+    let completed = 0;
+    if (answers.q1) completed++;
+    if (answers.q2) completed++;
+    if (answers.q3.trim() !== '') completed++;
+    if (answers.q4) completed++;
+    if (answers.q5.length > 0) completed++;
+    return (completed / 5) * 100;
+  };
+
+  return (
+    <div className="space-y-6">
+      <div className="mb-6">
+        <div className="flex justify-between items-center mb-2">
+          <h3 className="text-sm font-medium text-gray-700">Quiz Progress</h3>
+          <span className="text-sm text-gray-500">{Math.round(getCompletionPercentage())}% Complete</span>
+        </div>
+        <Progress value={getCompletionPercentage()} className="h-2" />
+      </div>
+
+      {/* Question 1 */}
+      <Card className="overflow-hidden shadow-md hover:shadow-lg transition-shadow border-l-4 border-l-blue-500">
+        <CardHeader className="bg-gradient-to-r from-blue-50 to-blue-100 pb-3">
+          <div className="flex items-center gap-2">
+            <div className="bg-blue-100 p-1.5 rounded-full">
+              <Laptop className="h-5 w-5 text-blue-600" />
+            </div>
+            <CardTitle className="text-base font-medium text-gray-900">Learning Management Systems</CardTitle>
+          </div>
+        </CardHeader>
+        <CardContent className="pt-4">
+          <h3 className="text-base font-medium text-gray-900 mb-3">1. Which of the following is a Learning Management System?</h3>
+          <RadioGroup 
+            value={answers.q1 || ""} 
+            onValueChange={(value) => onRadioChange('q1', value)}
+            className="space-y-2 mt-4"
+          >
+            <div className="flex items-center p-2 rounded-md hover:bg-blue-50 transition-colors">
+              <RadioGroupItem value="q1-a" id="q1-a" className="text-blue-600" />
+              <Label htmlFor="q1-a" className="pl-2 cursor-pointer flex-1">Microsoft Word</Label>
+            </div>
+            <div className="flex items-center p-2 rounded-md hover:bg-blue-50 transition-colors">
+              <RadioGroupItem value="q1-b" id="q1-b" className="text-blue-600" />
+              <Label htmlFor="q1-b" className="pl-2 cursor-pointer flex-1">Canvas</Label>
+            </div>
+            <div className="flex items-center p-2 rounded-md hover:bg-blue-50 transition-colors">
+              <RadioGroupItem value="q1-c" id="q1-c" className="text-blue-600" />
+              <Label htmlFor="q1-c" className="pl-2 cursor-pointer flex-1">Adobe Photoshop</Label>
+            </div>
+            <div className="flex items-center p-2 rounded-md hover:bg-blue-50 transition-colors">
+              <RadioGroupItem value="q1-d" id="q1-d" className="text-blue-600" />
+              <Label htmlFor="q1-d" className="pl-2 cursor-pointer flex-1">Zoom</Label>
+            </div>
+          </RadioGroup>
+        </CardContent>
+      </Card>
+
+      {/* Question 2 */}
+      <Card className="overflow-hidden shadow-md hover:shadow-lg transition-shadow border-l-4 border-l-purple-500">
+        <CardHeader className="bg-gradient-to-r from-purple-50 to-purple-100 pb-3">
+          <div className="flex items-center gap-2">
+            <div className="bg-purple-100 p-1.5 rounded-full">
+              <Users className="h-5 w-5 text-purple-600" />
+            </div>
+            <CardTitle className="text-base font-medium text-gray-900">Collaborative Learning</CardTitle>
+          </div>
+        </CardHeader>
+        <CardContent className="pt-4">
+          <h3 className="text-base font-medium text-gray-900 mb-3">2. Which teaching approach involves students working together to solve problems?</h3>
+          <RadioGroup 
+            value={answers.q2 || ""} 
+            onValueChange={(value) => onRadioChange('q2', value)}
+            className="space-y-2 mt-4"
+          >
+            <div className="flex items-center p-2 rounded-md hover:bg-purple-50 transition-colors">
+              <RadioGroupItem value="q2-a" id="q2-a" className="text-purple-600" />
+              <Label htmlFor="q2-a" className="pl-2 cursor-pointer flex-1">Direct Instruction</Label>
+            </div>
+            <div className="flex items-center p-2 rounded-md hover:bg-purple-50 transition-colors">
+              <RadioGroupItem value="q2-b" id="q2-b" className="text-purple-600" />
+              <Label htmlFor="q2-b" className="pl-2 cursor-pointer flex-1">Lecture</Label>
+            </div>
+            <div className="flex items-center p-2 rounded-md hover:bg-purple-50 transition-colors">
+              <RadioGroupItem value="q2-c" id="q2-c" className="text-purple-600" />
+              <Label htmlFor="q2-c" className="pl-2 cursor-pointer flex-1">Collaborative Learning</Label>
+            </div>
+            <div className="flex items-center p-2 rounded-md hover:bg-purple-50 transition-colors">
+              <RadioGroupItem value="q2-d" id="q2-d" className="text-purple-600" />
+              <Label htmlFor="q2-d" className="pl-2 cursor-pointer flex-1">Individual Assessment</Label>
+            </div>
+          </RadioGroup>
+        </CardContent>
+      </Card>
+
+      {/* Question 3 */}
+      <Card className="overflow-hidden shadow-md hover:shadow-lg transition-shadow border-l-4 border-l-green-500">
+        <CardHeader className="bg-gradient-to-r from-green-50 to-green-100 pb-3">
+          <div className="flex items-center gap-2">
+            <div className="bg-green-100 p-1.5 rounded-full">
+              <BookOpen className="h-5 w-5 text-green-600" />
+            </div>
+            <CardTitle className="text-base font-medium text-gray-900">Terminology</CardTitle>
+          </div>
+        </CardHeader>
+        <CardContent className="pt-4">
+          <h3 className="text-base font-medium text-gray-900 mb-3">
+            3. Fill in the blank: ____________ is an educational approach that involves groups of students working together to solve problems, complete tasks, or create products.
+          </h3>
+          <div className="mt-4">
+            <Input 
+              id="q3-answer" 
+              value={answers.q3} 
+              onChange={(e) => onTextChange(e.target.value)}
+              placeholder="Type your answer here..." 
+              className="w-full border-green-200 focus:border-green-500 focus:ring-green-500"
+            />
+            <p className="text-xs text-gray-500 mt-2 italic">Hint: The answer is a single word.</p>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Question 4 */}
+      <Card className="overflow-hidden shadow-md hover:shadow-lg transition-shadow border-l-4 border-l-indigo-500">
+        <CardHeader className="bg-gradient-to-r from-indigo-50 to-indigo-100 pb-3">
+          <div className="flex items-center gap-2">
+            <div className="bg-indigo-100 p-1.5 rounded-full">
+              <Smartphone className="h-5 w-5 text-indigo-600" />
+            </div>
+            <CardTitle className="text-base font-medium text-gray-900">Emerging Technologies</CardTitle>
+          </div>
+        </CardHeader>
+        <CardContent className="pt-4">
+          <h3 className="text-base font-medium text-gray-900 mb-3">4. Which of the following technologies can help create immersive learning experiences?</h3>
+          <RadioGroup 
+            value={answers.q4 || ""} 
+            onValueChange={(value) => onRadioChange('q4', value)}
+            className="space-y-2 mt-4"
+          >
+            <div className="flex items-center p-2 rounded-md hover:bg-indigo-50 transition-colors">
+              <RadioGroupItem value="q4-a" id="q4-a" className="text-indigo-600" />
+              <Label htmlFor="q4-a" className="pl-2 cursor-pointer flex-1">Email</Label>
+            </div>
+            <div className="flex items-center p-2 rounded-md hover:bg-indigo-50 transition-colors">
+              <RadioGroupItem value="q4-b" id="q4-b" className="text-indigo-600" />
+              <Label htmlFor="q4-b" className="pl-2 cursor-pointer flex-1">Spreadsheets</Label>
+            </div>
+            <div className="flex items-center p-2 rounded-md hover:bg-indigo-50 transition-colors">
+              <RadioGroupItem value="q4-c" id="q4-c" className="text-indigo-600" />
+              <Label htmlFor="q4-c" className="pl-2 cursor-pointer flex-1">Virtual Reality</Label>
+            </div>
+            <div className="flex items-center p-2 rounded-md hover:bg-indigo-50 transition-colors">
+              <RadioGroupItem value="q4-d" id="q4-d" className="text-indigo-600" />
+              <Label htmlFor="q4-d" className="pl-2 cursor-pointer flex-1">Word Processing</Label>
+            </div>
+          </RadioGroup>
+        </CardContent>
+      </Card>
+
+      {/* Question 5 */}
+      <Card className="overflow-hidden shadow-md hover:shadow-lg transition-shadow border-l-4 border-l-amber-500">
+        <CardHeader className="bg-gradient-to-r from-amber-50 to-amber-100 pb-3">
+          <div className="flex items-center gap-2">
+            <div className="bg-amber-100 p-1.5 rounded-full">
+              <BrainCircuit className="h-5 w-5 text-amber-600" />
+            </div>
+            <CardTitle className="text-base font-medium text-gray-900">Benefits Analysis</CardTitle>
+          </div>
+        </CardHeader>
+        <CardContent className="pt-4">
+          <h3 className="text-base font-medium text-gray-900 mb-3">5. Which of the following are benefits of collaborative learning? (Select all that apply)</h3>
+          <div className="space-y-2 mt-4">
+            <div className="flex items-center p-2 rounded-md hover:bg-amber-50 transition-colors">
+              <Checkbox 
+                id="q5-a" 
+                checked={answers.q5.includes('q5-a')}
+                onCheckedChange={(checked) => onCheckboxChange('q5-a', checked === true)}
+                className="text-amber-600 border-amber-400"
+              />
+              <Label htmlFor="q5-a" className="pl-2 cursor-pointer flex-1">Develops higher-level thinking skills</Label>
+            </div>
+            <div className="flex items-center p-2 rounded-md hover:bg-amber-50 transition-colors">
+              <Checkbox 
+                id="q5-b" 
+                checked={answers.q5.includes('q5-b')}
+                onCheckedChange={(checked) => onCheckboxChange('q5-b', checked === true)}
+                className="text-amber-600 border-amber-400"
+              />
+              <Label htmlFor="q5-b" className="pl-2 cursor-pointer flex-1">Eliminates the need for teacher guidance</Label>
+            </div>
+            <div className="flex items-center p-2 rounded-md hover:bg-amber-50 transition-colors">
+              <Checkbox 
+                id="q5-c" 
+                checked={answers.q5.includes('q5-c')}
+                onCheckedChange={(checked) => onCheckboxChange('q5-c', checked === true)}
+                className="text-amber-600 border-amber-400"
+              />
+              <Label htmlFor="q5-c" className="pl-2 cursor-pointer flex-1">Increases student retention</Label>
+            </div>
+            <div className="flex items-center p-2 rounded-md hover:bg-amber-50 transition-colors">
+              <Checkbox 
+                id="q5-d" 
+                checked={answers.q5.includes('q5-d')}
+                onCheckedChange={(checked) => onCheckboxChange('q5-d', checked === true)}
+                className="text-amber-600 border-amber-400"
+              />
+              <Label htmlFor="q5-d" className="pl-2 cursor-pointer flex-1">Builds self-esteem in students</Label>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Buttons */}
+      <div className="flex flex-col sm:flex-row gap-4 sm:justify-between mt-8">
+        <Button 
+          onClick={onSubmit} 
+          className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-medium py-2 px-6 rounded-lg shadow-md transition-all duration-200 hover:shadow-lg flex-1 sm:flex-initial"
+          size="lg"
+        >
+          Submit Quiz
+        </Button>
+        <Button 
+          variant="outline" 
+          onClick={onReset}
+          className="border-gray-300 text-gray-700 hover:bg-gray-50 font-medium py-2 px-6 rounded-lg transition-all duration-200 flex-1 sm:flex-initial"
+        >
+          Reset Answers
+        </Button>
+      </div>
+      
+      <div className="mt-4 p-4 bg-blue-50 rounded-lg text-sm text-blue-700 border border-blue-100">
+        <p>💡 <strong>Pro Tip:</strong> Your answers are automatically saved as you go. You can leave and come back to finish the quiz later!</p>
+      </div>
+    </div>
+  );
+}

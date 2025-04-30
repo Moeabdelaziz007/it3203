@@ -1,28 +1,230 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Topic 1 - History of the Web</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <header>
-  <h1>Welcome to My Web Project</h1>
-  <nav>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="topic1.html">Topic 1</a></li>
-      <li><a href="topic2.html">Topic 2</a></li>
-      <li><a href="references.html">References</a></li>
-      <li><a href="quiz.html">Quiz</a></li>
-    </ul>
-  </nav>
-</header>
+import { Card, CardContent } from '@/components/ui/card';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+import { Check, Smartphone, Laptop, BookOpen, Users, BrainCircuit } from 'lucide-react';
 
-  <main>
-    <h2>Topic 1: How It All Started</h2>
-    <p>The World Wide Web was invented by Tim Berners-Lee in 1989. It was designed to facilitate information sharing between researchers and scientists.</p>
-    <p>He introduced the first website and the basic HTML language for structuring web content.</p>
-  </main>
-</body>
-</html>
+export default function Topic1() {
+  return (
+    <section className="py-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col md:flex-row md:items-center mb-8">
+          <div className="md:flex-1">
+            <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-6">Tech in Education: What's the Big Deal?</h1>
+            <p className="text-lg text-gray-700 mb-4">
+              Hey there! Let's talk about how tech is changing the way we learn. 👋
+            </p>
+          </div>
+          <div className="mt-4 md:mt-0 md:ml-6 flex justify-center">
+            <div className="w-40 h-40 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
+              <Laptop className="h-20 w-20 text-white" />
+            </div>
+          </div>
+        </div>
+        
+        <Card className="mb-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
+          <CardContent className="p-6">
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">What's This All About?</h2>
+            <p className="text-lg text-gray-700 mb-4">
+              Ever noticed how tech has changed your classroom experience? It's not just about having laptops anymore! 
+              We're looking at how different tech tools can make learning more fun, personal, and effective.
+            </p>
+            <p className="text-lg text-gray-700">
+              From Canvas to AI tutors that adapt to how you learn, technology is opening up new ways to study that fit YOUR needs.
+            </p>
+            <div className="mt-6 p-4 bg-blue-50 rounded-lg border border-blue-100">
+              <p className="text-blue-800 italic">
+                "The average college student now uses at least 3 different tech platforms for their courses. That's wild when you think about how it used to be just textbooks!" — Recent Student Survey
+              </p>
+            </div>
+          </CardContent>
+        </Card>
+        
+        <Card className="mb-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
+          <CardContent className="p-6">
+            <div className="flex flex-col md:flex-row md:items-center mb-4">
+              <h2 className="text-2xl font-bold text-gray-900 md:flex-1">Tech You're Probably Already Using</h2>
+              <div className="mt-3 md:mt-0">
+                <span className="inline-flex items-center px-3 py-1 rounded-full bg-purple-100 text-purple-800 text-sm font-medium">
+                  <BookOpen className="h-4 w-4 mr-1" /> Student Essentials
+                </span>
+              </div>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+              <div className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 hover:border-blue-200 transition-all">
+                <div className="p-4 bg-blue-50 flex items-center justify-center">
+                  <Laptop className="h-12 w-12 text-blue-500" />
+                </div>
+                <div className="p-4">
+                  <h3 className="text-lg font-bold text-gray-900">Learning Management Systems</h3>
+                  <p className="mt-2 text-gray-600">Canvas, Blackboard, D2L – you know, those sites where your professors post everything. They're not just for assignments!</p>
+                </div>
+              </div>
+              <div className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 hover:border-blue-200 transition-all">
+                <div className="p-4 bg-purple-50 flex items-center justify-center">
+                  <BrainCircuit className="h-12 w-12 text-purple-500" />
+                </div>
+                <div className="p-4">
+                  <h3 className="text-lg font-bold text-gray-900">Adaptive Learning</h3>
+                  <p className="mt-2 text-gray-600">Fancy software that figures out what you're good at and what you need help with. It's like having a tutor that adjusts to YOU.</p>
+                </div>
+              </div>
+              <div className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 hover:border-blue-200 transition-all">
+                <div className="p-4 bg-green-50 flex items-center justify-center">
+                  <Smartphone className="h-12 w-12 text-green-500" />
+                </div>
+                <div className="p-4">
+                  <h3 className="text-lg font-bold text-gray-900">VR and AR</h3>
+                  <p className="mt-2 text-gray-600">Imagine walking through ancient Rome in history class or exploring a cell in biology. That's what VR/AR can do – make learning super immersive!</p>
+                </div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+        
+        <Card className="mb-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
+          <CardContent className="p-6">
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">What Students Say Works Best</h2>
+            <div className="overflow-x-auto">
+              <Table className="w-full">
+                <TableHeader className="bg-gradient-to-r from-blue-50 to-purple-50">
+                  <TableRow>
+                    <TableHead className="w-[180px] text-blue-700">Tech Tool</TableHead>
+                    <TableHead className="text-blue-700">How Helpful?</TableHead>
+                    <TableHead className="text-blue-700">Best For</TableHead>
+                    <TableHead className="text-blue-700">Student Quote</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  <TableRow className="hover:bg-blue-50">
+                    <TableCell className="font-medium">Canvas/LMS</TableCell>
+                    <TableCell>
+                      <div className="flex items-center">
+                        <span className="font-bold text-green-600">★★★★★</span>
+                        <span className="ml-2">Super Helpful</span>
+                      </div>
+                    </TableCell>
+                    <TableCell>Staying organized & not missing deadlines</TableCell>
+                    <TableCell className="italic text-gray-600">"I'd be lost without calendar reminders!"</TableCell>
+                  </TableRow>
+                  <TableRow className="hover:bg-blue-50">
+                    <TableCell className="font-medium">Adaptive Learning</TableCell>
+                    <TableCell>
+                      <div className="flex items-center">
+                        <span className="font-bold text-green-600">★★★★☆</span>
+                        <span className="ml-2">Pretty Great</span>
+                      </div>
+                    </TableCell>
+                    <TableCell>Studying at your own pace</TableCell>
+                    <TableCell className="italic text-gray-600">"It's like having a personal tutor 24/7"</TableCell>
+                  </TableRow>
+                  <TableRow className="hover:bg-blue-50">
+                    <TableCell className="font-medium">VR/AR Apps</TableCell>
+                    <TableCell>
+                      <div className="flex items-center">
+                        <span className="font-bold text-green-600">★★★★☆</span>
+                        <span className="ml-2">Fun & Effective</span>
+                      </div>
+                    </TableCell>
+                    <TableCell>Making boring topics interesting</TableCell>
+                    <TableCell className="italic text-gray-600">"Way better than just reading about it"</TableCell>
+                  </TableRow>
+                  <TableRow className="hover:bg-blue-50">
+                    <TableCell className="font-medium">Collaboration Tools</TableCell>
+                    <TableCell>
+                      <div className="flex items-center">
+                        <span className="font-bold text-green-600">★★★★★</span>
+                        <span className="ml-2">Essential</span>
+                      </div>
+                    </TableCell>
+                    <TableCell>Group projects & study sessions</TableCell>
+                    <TableCell className="italic text-gray-600">"Saved our group project when we couldn't meet in person"</TableCell>
+                  </TableRow>
+                </TableBody>
+              </Table>
+            </div>
+          </CardContent>
+        </Card>
+        
+        <Card className="mb-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
+          <CardContent className="p-6">
+            <h2 className="text-2xl font-bold text-gray-900 mb-6">Why Tech in Education is Actually Awesome</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="bg-gradient-to-br from-green-50 to-blue-50 p-5 rounded-xl shadow-sm border border-green-100">
+                <div className="flex items-center mb-3">
+                  <Check className="h-6 w-6 text-green-500 mr-2" />
+                  <h3 className="font-bold text-green-800 text-lg">Learn Anywhere, Anytime</h3>
+                </div>
+                <p className="text-gray-700">No more being stuck in a classroom! Access your courses from your bed, a coffee shop, or even while traveling. Perfect for busy students juggling work and school.</p>
+              </div>
+              <div className="bg-gradient-to-br from-purple-50 to-pink-50 p-5 rounded-xl shadow-sm border border-purple-100">
+                <div className="flex items-center mb-3">
+                  <Users className="h-6 w-6 text-purple-500 mr-2" />
+                  <h3 className="font-bold text-purple-800 text-lg">Makes Learning More Social</h3>
+                </div>
+                <p className="text-gray-700">Collab tools make group projects less painful and more productive. Plus, online forums let you connect with classmates even in huge lecture courses.</p>
+              </div>
+              <div className="bg-gradient-to-br from-blue-50 to-indigo-50 p-5 rounded-xl shadow-sm border border-blue-100">
+                <div className="flex items-center mb-3">
+                  <BrainCircuit className="h-6 w-6 text-blue-500 mr-2" />
+                  <h3 className="font-bold text-blue-800 text-lg">Personalized Just for You</h3>
+                </div>
+                <p className="text-gray-700">Adaptive tech can figure out your learning style and adjust accordingly. Struggle with math but ace writing? Your online coursework can adapt to give you extra help where you need it.</p>
+              </div>
+              <div className="bg-gradient-to-br from-yellow-50 to-orange-50 p-5 rounded-xl shadow-sm border border-yellow-100">
+                <div className="flex items-center mb-3">
+                  <Smartphone className="h-6 w-6 text-yellow-600 mr-2" />
+                  <h3 className="font-bold text-yellow-800 text-lg">Makes Boring Stuff Fun</h3>
+                </div>
+                <p className="text-gray-700">Let's be honest - some subjects can be dry. Interactive simulations, games, and VR experiences make even the dullest topics more engaging and memorable.</p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+        
+        <Card className="mb-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
+          <CardContent className="p-6">
+            <h2 className="text-2xl font-bold text-gray-900 mb-6">The Not-So-Great Parts (Keeping It Real)</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="border border-red-100 rounded-xl overflow-hidden">
+                <div className="bg-red-50 p-4">
+                  <h3 className="font-bold text-red-800">The Digital Divide Problem</h3>
+                </div>
+                <div className="p-4">
+                  <p className="text-gray-700">Not everyone has good internet or the latest devices. Some students get left behind when courses rely too heavily on tech.</p>
+                </div>
+              </div>
+              <div className="border border-red-100 rounded-xl overflow-hidden">
+                <div className="bg-red-50 p-4">
+                  <h3 className="font-bold text-red-800">Tech Overload Is Real</h3>
+                </div>
+                <div className="p-4">
+                  <p className="text-gray-700">When every class uses a different platform or tool, it gets overwhelming to keep track of everything. Login fatigue is a thing!</p>
+                </div>
+              </div>
+              <div className="border border-red-100 rounded-xl overflow-hidden">
+                <div className="bg-red-50 p-4">
+                  <h3 className="font-bold text-red-800">Privacy Concerns</h3>
+                </div>
+                <div className="p-4">
+                  <p className="text-gray-700">Who's collecting data on how you learn? What are they doing with it? These questions matter but often go unanswered.</p>
+                </div>
+              </div>
+              <div className="border border-red-100 rounded-xl overflow-hidden">
+                <div className="bg-red-50 p-4">
+                  <h3 className="font-bold text-red-800">Some Profs Just Don't Get It</h3>
+                </div>
+                <div className="p-4">
+                  <p className="text-gray-700">We've all had that professor who struggles with basic tech. When instructors aren't properly trained, even the best tools become frustrating.</p>
+                </div>
+              </div>
+            </div>
+            <div className="mt-6 p-5 bg-yellow-50 rounded-lg border border-yellow-100">
+              <p className="text-yellow-800">
+                <strong>Student Tip:</strong> If you're struggling with tech in your courses, don't suffer in silence! Reach out to your school's IT helpdesk or your professor during office hours. Most schools have resources to help students who need tech support.
+              </p>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    </section>
+  );
+}
