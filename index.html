@@ -1,13 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-    <!-- This is a replit script which adds a banner on the top of the page when opened in development mode outside the replit environment -->
-    <script type="text/javascript" src="https://replit.com/public/js/replit-dev-banner.js"></script>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IT3203 Educational Website</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header class="navbar">
+  <div class="container">
+    <div class="logo">IT3203 Project</div>
+    <nav>
+      <ul>
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="topic1.html">Topic 1</a></li>
+        <li><a href="topic2.html">Topic 2</a></li>
+        <li><a href="quiz.html">Quiz</a></li>
+        <li><a href="references.html">References</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <h1 class="gradient-text">Educational Research Project</h1>
+    <p class="larger-text">Exploring Educational Technology and their Impact on Learning Environments</p>
+    <div class="buttons">
+      <a href="topic1.html" class="btn btn-light">Explore Research</a>
+      <a href="quiz.html" class="btn btn-primary">Take Quiz</a>
+    </div>
+  </div>
+</section>
+
+<section class="container">
+  <h2 class="text-center">Research Topics</h2>
+  <div class="cards">
+    <div class="card shadow-card hover-shadow">
+      <div class="card-content">
+        <h3>Technology in Education</h3>
+        <p>An exploration of how technology is transforming modern educational environments and learning methodologies.</p>
+        <a href="topic1.html" class="link">Read more <span>→</span></a>
+      </div>
+    </div>
+    <div class="card shadow-card hover-shadow">
+      <div class="card-content">
+        <h3>Collaborative Learning</h3>
+        <p>Investigating the impact of collaborative approaches on student engagement and learning outcomes.</p>
+        <a href="topic2.html" class="link">Read more <span>→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="container">
+  <h2 class="text-center">Self-Assessment Quiz</h2>
+  <div class="card shadow-card">
+    <div class="card-content">
+      <p>Test your knowledge of the topics with our interactive quiz.</p>
+      <p>The quiz contains 5 questions including multiple choice, checkbox, and fill-in-the-blank formats.</p>
+      <a href="quiz.html" class="btn btn-primary">Start Quiz</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2024 Educational Project by IT3203 Student</p>
+</footer>
+
+</body>
 </html>
