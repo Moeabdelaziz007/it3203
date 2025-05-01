@@ -1,41 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Quiz - IT3203</title>
-<link rel="stylesheet" href="style.css" /></head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Quiz - IT3203</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .result-box {
+      margin-top: 20px;
+      padding: 15px;
+      background-color: #f0f9ff;
+      border-left: 5px solid #007bff;
+    }
+  </style>
+</head>
 <body>
-<header class="navbar"><div class="container">
-<div class="logo">IT3203</div>
-<nav><ul>
-<li><a href="index.html">Home</a></li>
-<li><a href="topic1.html">Topic 1</a></li>
-<li><a href="topic2.html">Topic 2</a></li>
-<li><a href="quiz.html" class="active">Quiz</a></li>
-<li><a href="references.html">References</a></li>
-</ul></nav></div></header>
+<header class="navbar">
+  <div class="container">
+    <div class="logo">IT3203</div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="topic1.html">Topic 1</a></li>
+        <li><a href="topic2.html">Topic 2</a></li>
+        <li><a href="quiz.html" class="active">Quiz</a></li>
+        <li><a href="references.html">References</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
 
 <section class="container quiz-page">
-<h1 class="text-center">Interactive Quiz</h1>
-<form>
-<div class="quiz-section"><div class="question"><strong>1. What does HTML stand for?</strong></div>
-<div class="options">
-<label class="option"><input type="radio" name="q1" /> Hyper Text Markup Language</label>
-<label class="option"><input type="radio" name="q1" /> Home Tool Markup Language</label>
-</div></div>
+  <h1 class="text-center">Interactive Quiz</h1>
+  <form id="quizForm">
+    <div class="quiz-section">
+      <div class="question"><strong>1. What does HTML stand for?</strong></div>
+      <div class="options">
+        <label class="option"><input type="radio" name="q1" value="a" /> Hyper Text Markup Language</label>
+        <label class="option"><input type="radio" name="q1" value="b" /> Home Tool Markup Language</label>
+      </div>
+    </div>
 
-<div class="quiz-section"><div class="question"><strong>2. Which of the following are CSS frameworks?</strong></div>
-<div class="options">
-<label class="option"><input type="checkbox" name="q2" /> Bootstrap</label>
-<label class="option"><input type="checkbox" name="q2" /> Tailwind</label>
-<label class="option"><input type="checkbox" name="q2" /> Django</label>
-</div></div>
+    <div class="quiz-section">
+      <div class="question"><strong>2. Which of the following are CSS frameworks?</strong></div>
+      <div class="options">
+        <label class="option"><input type="checkbox" name="q2" value="Bootstrap" /> Bootstrap</label>
+        <label class="option"><input type="checkbox" name="q2" value="Tailwind" /> Tailwind</label>
+        <label class="option"><input type="checkbox" name="q2" value="Django" /> Django</label>
+      </div>
+    </div>
 
-<div class="quiz-section"><div class="question"><strong>3. JavaScript is used for:</strong></div>
-<div class="options">
-<label class="option"><input type="radio" name="q3" /> Styling</label>
-<label class="option"><input type="radio" name="q3" /> Interactivity</label>
-</div></div>
+    <div class="quiz-section">
+      <div class="question"><strong>3. JavaScript is used for:</strong></div>
+      <div class="options">
+        <label class="option"><input type="radio" name="q3" value="a" /> Styling</label>
+        <label class="option"><input type="radio" name="q3" value="b" /> Interactivity</label>
+      </div>
+    </div>
 
-<button type="submit" class="btn btn-primary">Submit</button>
-</form>
-</section></body></html>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+
+  <div id="result" class="result-box" style="display:none;"></div>
+</section>
+
+<script>
+document.getElementById("quizForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  let score = 0;
+
+  // Q1
+  const q1 = document.querySelector('input[name="q1"]:checked');
+  if (q1 && q1.value === "a") score++;
+
+  // Q2 - checkboxes
+  const q2 = Array.from(document.querySelectorAll('input[name="q2"]:checked')).map(cb => cb.value);
+  const correctQ2 = ["Bootstrap", "Tailwind"];
+  const isQ2Correct = correctQ2.every(ans => q2.includes(ans)) && q2.length === correctQ2.length;
+  if (isQ2Correct) score++;
+
+  // Q3
+  const q3 = document.querySelector('input[name="q3"]:checked');
+  if (q3 && q3.value === "b") score++;
+
+  // Display result
+  const resultBox = document.getElementById("result");
+  resultBox.style.display = "block";
+  resultBox.innerHTML = `<h3>Your Score: ${score} / 3</h3>`;
+});
+</script>
+</body>
+</html>
